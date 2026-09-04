@@ -1,12 +1,12 @@
 {
-  "lastUpdate": "2026-09-04T14:47:02.444353",
+  "lastUpdate": "2026-09-04T14:57:48.710221",
   "totalNews": 17,
   "news": [
     {
       "title": "Rocket Report: Engines installed for Artemis III; Long March 6C breakup in LEO",
       "summary": "Two of Europe's leading launch startups announced new fundraising this week.",
       "source": "Ars Technica",
-      "date": "fa 1h",
+      "date": "fa 2h",
       "link": "https://arstechnica.com/space/2026/09/rocket-report-china-debuts-yet-another-new-rocket-nasa-considers-bulk-buys/",
       "category": "tech",
       "categoryLabel": "Tecnologia"
@@ -33,13 +33,13 @@
       "title": "Nintendo&#8217;s next two Direct events are both happening next week",
       "summary": "Nintendo just announced two Direct events for next week, scheduled back to back. First up is the Legend of Zelda 40th Anniversary Direct on September …",
       "source": "The Verge",
-      "date": "fa 16 min",
+      "date": "fa 27 min",
       "link": "https://www.theverge.com/games/990207/nintendo-direct-zelda-40th",
       "category": "tech",
       "categoryLabel": "Tecnologia"
     },
     {
-      "title": "Oh good, looks like yet another swarm of rogue AI agents from OpenAI",
+      "title": "Rogue OpenAI agents appear to have organized another attack using a German wiki",
       "summary": "A swarm of rogue AI agents from OpenAI reportedly commandeered a German website and transformed it into a messaging board for other agents, with offic…",
       "source": "The Verge",
       "date": "fa 1h",
@@ -49,9 +49,9 @@
     },
     {
       "title": "Burnt out on a three-day week",
-      "summary": "Article URL: https://jennywanger.com/articles/burnt-out-on-a-three-day-week/ Comments URL: https://news.ycombinator.com/item?id=49564960 Points: 8 # C…",
+      "summary": "Article URL: https://jennywanger.com/articles/burnt-out-on-a-three-day-week/ Comments URL: https://news.ycombinator.com/item?id=49564960 Points: 22 # …",
       "source": "Hacker News",
-      "date": "fa 32 min",
+      "date": "fa 43 min",
       "link": "https://jennywanger.com/articles/burnt-out-on-a-three-day-week/",
       "category": "tech",
       "categoryLabel": "Tecnologia"
@@ -60,26 +60,26 @@
       "title": "Top Pentagon Official Contracted Personal Lawyer to Handle Minerals Deal",
       "summary": "Article URL: https://prospect.org/2026/08/21/pentagon-minerals-deal-department-defense-cerberus-capital-alan-waldenberg-stephen-feinberg/ Comments URL…",
       "source": "Hacker News",
-      "date": "fa 52 min",
+      "date": "fa 1h",
       "link": "https://prospect.org/2026/08/21/pentagon-minerals-deal-department-defense-cerberus-capital-alan-waldenberg-stephen-feinberg/",
       "category": "tech",
       "categoryLabel": "Tecnologia - IA"
     },
     {
-      "title": "Treasuries Slide After Jobs Data Lift Fed Hike Wagers",
-      "summary": "US Treasuries fell after US job growth topped forecasts in August, prompting traders to nudge up expectations that Federal Reserve officials raise int…",
+      "title": "Latest Oil Market News and Analysis for Sept. 4",
+      "summary": "Oil slid as investors unwound some bullish bets before a US holiday weekend, while rare signs of progress toward ending the Russia-Ukraine war chipped…",
       "source": "Bloomberg Markets",
-      "date": "fa 2h",
-      "link": "https://www.bloomberg.com/news/articles/2026-09-04/treasuries-slide-after-strong-jobs-data-lift-fed-hike-wagers",
+      "date": "fa 16h",
+      "link": "https://www.bloomberg.com/news/articles/2026-09-03/latest-oil-market-news-and-analysis-for-sept-4",
       "category": "economy",
       "categoryLabel": "Macroeconomia"
     },
     {
-      "title": "France Seizes €65 Million as Part of McKinsey Tax Case",
-      "summary": "French investigators, aided by Belgian officials, have seized more than €65 million ($75.5 million) as part of a tax probe into McKinsey &amp; Co.",
+      "title": "US Adds 162,000 Jobs, Topping All Estimates",
+      "summary": "US job growth surged in August and the unemployment rate held steady, suggesting the labor market has more momentum than previously thought. Claudia S…",
       "source": "Bloomberg Markets",
       "date": "fa 8 min",
-      "link": "https://www.bloomberg.com/news/articles/2026-09-04/france-seizes-65-million-as-part-of-mckinsey-tax-case",
+      "link": "https://www.bloomberg.com/news/videos/2026-09-04/us-adds-162-000-jobs-topping-all-estimates-video",
       "category": "economy",
       "categoryLabel": "Macroeconomia"
     },
@@ -87,7 +87,7 @@
       "title": "Russian drone ‘aimed directly’ at Ukraine security service HQ, Zelensky says",
       "summary": "A Russian drone struck the headquarters of Ukraine's SBU security services in Kyiv on Friday afternoon, said Ukrainian President Volodymyr Zelensky, i…",
       "source": "France 24 Europe",
-      "date": "fa 47 min",
+      "date": "fa 58 min",
       "link": "https://www.france24.com/en/europe/20260904-russian-drone-aimed-directly-at-ukraine-security-service-hq-zelensky-says",
       "category": "politics",
       "categoryLabel": "Política"
@@ -96,7 +96,7 @@
       "title": "Meloni celebrates milestone as Italy's longest-lasting government",
       "summary": "Italy's Prime Minister Giorgia Meloni is celebrating a milestone: her hard-right government is now the longest-lasting in the country's post war histo…",
       "source": "France 24 Europe",
-      "date": "fa 56 min",
+      "date": "fa 1h",
       "link": "https://www.france24.com/en/video/20260904-meloni-celebrates-milestone-as-italy-s-longest-lasting-government",
       "category": "politics",
       "categoryLabel": "Política"
@@ -120,20 +120,20 @@
       "categoryLabel": "Política"
     },
     {
-      "title": "Protecció Civil valorarà d’enviar ES-alert per avisar dels efectes de fenòmens en curs o que acabin de passar",
-      "summary": "Parlon diu que cal preparar-se per situacions d'inestabilitat climàtica",
+      "title": "Vinebre registra un nou rècord de temperatura en un mes de setembre a Catalunya amb 41,8 graus",
+      "summary": "La calor també deixa màxims històrics a Andorra i Ademús · Fraga arriba a 39,9 graus i les Illes superen els 36",
       "source": "VilaWeb",
-      "date": "fa 19 min",
-      "link": "https://www.vilaweb.cat/noticies/proteccio-civil-valorara-enviar-es-alert-per-avisar-la-poblacio-dels-efectes-de-fenomens-en-curs-o-que-acabin-de-passar/",
+      "date": "fa poc",
+      "link": "https://www.vilaweb.cat/noticies/vinebre-registra-un-nou-record-de-temperatura-en-un-mes-de-setembre-a-catalunya-amb-418-graus/",
       "category": "politics",
       "categoryLabel": "Política"
     },
     {
-      "title": "Sis trens de cada deu de Rodalia va arribar tard al seu destí al juliol, amb una puntualitat del 39,8%",
-      "summary": "La majoria dels retards són causats per factors externs a l'operadora RENFE",
+      "title": "Protecció Civil valorarà d’enviar ES-alert per avisar dels efectes de fenòmens en curs o que acabin de passar",
+      "summary": "Parlon diu que cal preparar-se per situacions d'inestabilitat climàtica",
       "source": "VilaWeb",
-      "date": "fa 29 min",
-      "link": "https://www.vilaweb.cat/noticies/sis-trens-rodalia-desti-juliol/",
+      "date": "fa 30 min",
+      "link": "https://www.vilaweb.cat/noticies/proteccio-civil-valorara-enviar-es-alert-per-avisar-la-poblacio-dels-efectes-de-fenomens-en-curs-o-que-acabin-de-passar/",
       "category": "politics",
       "categoryLabel": "Política"
     },
