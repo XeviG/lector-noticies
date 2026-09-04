@@ -15,18 +15,18 @@ import re
 FEEDS = {
     'sports': [
         {
-            'url': 'https://feeds.espn.com/feeds/site/espneurope/nba',
+            'url': 'https://www.espn.com/espn/rss/nba/news',
             'source': 'ESPN NBA',
             'limit': 3
         },
         {
-            'url': 'https://www.rugbyrama.fr/rss/flux/toute-l-actualite',
-            'source': 'Rugbyrama',
+            'url': 'http://feeds.bbci.co.uk/sport/rss.xml',
+            'source': 'BBC Sport',
             'limit': 2
         },
         {
-            'url': 'https://www.worldathletics.org/rss/news',
-            'source': 'World Athletics',
+            'url': 'https://www.france24.com/en/sports/rss',
+            'source': 'France24 Sports',
             'limit': 2
         }
     ],
@@ -49,8 +49,8 @@ FEEDS = {
     ],
     'economy': [
         {
-            'url': 'https://feeds.reuters.com/finance/markets',
-            'source': 'Reuters Finance',
+            'url': 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258',
+            'source': 'CNBC',
             'limit': 3
         },
         {
@@ -59,25 +59,25 @@ FEEDS = {
             'limit': 2
         },
         {
-            'url': 'https://feeds.cnbc.com/id/100003114/device/rss/rss.html',
-            'source': 'CNBC',
+            'url': 'https://feeds.marketwatch.com/marketwatch/topstories/',
+            'source': 'MarketWatch',
             'limit': 2
         }
     ],
     'politics': [
         {
-            'url': 'https://feeds.bbc.co.uk/news/world/europe/rss.xml',
+            'url': 'http://feeds.bbci.co.uk/news/world/europe/rss.xml',
             'source': 'BBC Europe',
-            'limit': 2
-        },
-        {
-            'url': 'https://feeds.reuters.com/reuters/worldNews',
-            'source': 'Reuters World',
             'limit': 2
         },
         {
             'url': 'https://www.france24.com/en/europe/rss',
             'source': 'France 24 Europe',
+            'limit': 2
+        },
+        {
+            'url': 'https://feeds.npr.org/1004/rss.xml',
+            'source': 'NPR World',
             'limit': 2
         },
         {
@@ -93,8 +93,8 @@ FEEDS = {
     ],
     'education': [
         {
-            'url': 'https://feeds.bbc.co.uk/news/rss.xml',
-            'source': 'BBC News',
+            'url': 'http://feeds.bbci.co.uk/news/education/rss.xml',
+            'source': 'BBC Education',
             'limit': 2
         },
         {
@@ -103,8 +103,8 @@ FEEDS = {
             'limit': 2
         },
         {
-            'url': 'https://feeds.reuters.com/reuters/lifeNews',
-            'source': 'Reuters Life',
+            'url': 'https://www.edsurge.com/feed',
+            'source': 'EdSurge',
             'limit': 1
         }
     ]
@@ -119,7 +119,7 @@ CATEGORY_LABELS = {
 }
 
 SUBCATEGORY_LABELS = {
-    'sports': ['Esports', 'NBA', 'Rugby', 'Atletisme'],
+    'sports': ['Esports', 'NBA', 'Futbol', 'Poliesportiu'],
     'tech': ['Tecnologia', 'IA', 'Ciberseguretat', 'Innovació'],
     'economy': ['Macroeconomia', 'Mercats', 'Economia Global', 'Finances'],
     'politics': ['Política', 'Europa', 'Notícies Internacionals'],

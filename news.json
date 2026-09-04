@@ -1,114 +1,330 @@
 {
-  "lastUpdate": "2026-09-04T08:00:00",
-  "totalNews": 12,
+  "lastUpdate": "2026-09-04T17:11:44.917489",
+  "totalNews": 36,
   "news": [
     {
-      "title": "Denver Nuggets defeat Lakers in high-stakes playoff battle",
-      "summary": "Jokic delivers 38-point performance to keep the Nuggets' championship hopes alive in crucial Western Conference matchup.",
-      "category": "sports",
-      "categoryLabel": "Esports - NBA",
+      "title": "Windhorst: The Clippers need to take this L -- and move on",
+      "summary": "After the NBA levied its enormous punishment on the Clippers, the team would be wise to change course and lean on precedent -- fast.",
       "source": "ESPN NBA",
-      "date": "fa 2 hores",
-      "link": "#"
-    },
-    {
-      "title": "Stade Français dominates Racing 92 in Top 14 rugby derby",
-      "summary": "Historic 35-28 victory showcases French rugby's competitive intensity with standout performances from both sides.",
+      "date": "fa 2h",
+      "link": "https://www.espn.com/nba/story/_/id/49819613/windhorst-la-clippers-need-take-loss-move-nba-punishment-suspensions",
       "category": "sports",
-      "categoryLabel": "Esports - Rugby",
-      "source": "Rugbyrama",
-      "date": "fa 4 hores",
-      "link": "#"
+      "categoryLabel": "Esports"
     },
     {
-      "title": "World Athletics celebrates new Diamond League season records",
-      "summary": "Elite athletes break barriers in middle-distance running events with impressive performances in latest championship round.",
+      "title": "Suspensions, picks revoked and a $30M fine: Making sense of the Clippers punishment",
+      "summary": "ESPN's NBA insiders break down the harshest punishment in league history.",
+      "source": "ESPN NBA",
+      "date": "fa 2h",
+      "link": "https://www.espn.com/nba/story/_/id/49806683/nba-punishes-la-clippers-kawhi-leonard-investigation-30-million-fine-steve-ballmer-suspensions-top-questions",
       "category": "sports",
-      "categoryLabel": "Esports - Atletisme",
-      "source": "World Athletics",
-      "date": "fa 6 hores",
-      "link": "#"
+      "categoryLabel": "Esports"
     },
     {
-      "title": "Artificial Intelligence transforms enterprise software development",
-      "summary": "New generation AI tools demonstrate unprecedented capabilities in code synthesis, testing, and deployment automation.",
-      "category": "tech",
-      "categoryLabel": "Tecnologia - IA",
+      "title": "Sources: Simmons, Kings agree to one-year deal",
+      "summary": "Ben Simmons is back in the NBA after reaching one-year, $3.5 million deal with the Kings, his agents Max Wiepking, Sean Tribe and Ryan Arney told Ands…",
+      "source": "ESPN NBA",
+      "date": "fa 27 min",
+      "link": "https://www.espn.com/nba/story/_/id/49824980/sources-ben-simmons-agrees-1-year-35m-deal-kings",
+      "category": "sports",
+      "categoryLabel": "Esports"
+    },
+    {
+      "title": "'My position now is as one of two 10s' - Kane breaks down his evolution",
+      "summary": "Harry Kane was the highest goalscorer in Europe last season, yet he plays like a midfielder. We ask him to break down his game.",
+      "source": "BBC Sport",
+      "date": "fa 5h",
+      "link": "https://www.bbc.co.uk/sport/articles/cx2z7rjn2p2o?at_medium=RSS&at_campaign=rss",
+      "category": "sports",
+      "categoryLabel": "Esports"
+    },
+    {
+      "title": "Donald and Crocombe get England white-ball call-ups",
+      "summary": "England name the uncapped Aneurin Donald and Henry Crocombe in their squads for the white-ball series against Sri Lanka.",
+      "source": "BBC Sport",
+      "date": "fa 10 min",
+      "link": "https://www.bbc.co.uk/sport/cricket/articles/c4g58y852kwo?at_medium=RSS&at_campaign=rss",
+      "category": "sports",
+      "categoryLabel": "Esports"
+    },
+    {
+      "title": "PSG look for their first Ligue 1 win against Monaco",
+      "summary": "PSG have still not won a Ligue 1 match this season. After two games, the European champions have recorded two draws. The exact opposite is true of Mon…",
+      "source": "France24 Sports",
+      "date": "fa 8h",
+      "link": "https://www.france24.com/en/tv-shows/sports/20260904-psg-look-for-their-first-ligue-1-win-against-monaco",
+      "category": "sports",
+      "categoryLabel": "Esports"
+    },
+    {
+      "title": "Premier League sets new transfer market record",
+      "summary": "There’s the Premier League and then there’s everyone else. The 20 Premier League sides spent more than €4 billion this summer in the transfer market, …",
+      "source": "France24 Sports",
+      "date": "fa 1d",
+      "link": "https://www.france24.com/en/tv-shows/sports/20260903-premier-league-sets-new-transfer-market-record",
+      "category": "sports",
+      "categoryLabel": "Esports"
+    },
+    {
+      "title": "Rocket Report: Engines installed for Artemis III; Long March 6C breakup in LEO",
+      "summary": "Two of Europe's leading launch startups announced new fundraising this week.",
       "source": "Ars Technica",
-      "date": "fa 3 hores",
-      "link": "#"
+      "date": "fa 2h",
+      "link": "https://arstechnica.com/space/2026/09/rocket-report-china-debuts-yet-another-new-rocket-nasa-considers-bulk-buys/",
+      "category": "tech",
+      "categoryLabel": "Tecnologia"
     },
     {
-      "title": "Apple unveils revolutionary M4 chip with advanced neural processing",
-      "summary": "Latest silicon generation features breakthrough machine learning acceleration and energy efficiency improvements.",
+      "title": "Nearly impossible? How Fairphone built the ethical, repairable Fairphone Gen 6+.",
+      "summary": "Fairphone's CTO explains how and why the Dutch company builds a different kind of smartphone.",
+      "source": "Ars Technica",
+      "date": "fa 4h",
+      "link": "https://arstechnica.com/gadgets/2026/09/nearly-impossible-how-fairphone-built-the-ethical-repairable-fairphone-gen-6/",
       "category": "tech",
-      "categoryLabel": "Tecnologia - Innovació",
+      "categoryLabel": "Tecnologia"
+    },
+    {
+      "title": "Reports: RFK Jr. ordered measles deaths deletion; CDC still secretly counts them",
+      "summary": "CDC staff had already accepted the measles death reports when RFK Jr. meddled.",
+      "source": "Ars Technica",
+      "date": "fa 16h",
+      "link": "https://arstechnica.com/health/2026/09/reports-rfk-jr-ordered-measles-deaths-deletion-cdc-still-secretly-counts-them/",
+      "category": "tech",
+      "categoryLabel": "Tecnologia"
+    },
+    {
+      "title": "Alienware’s refurbished 16 Aurora is almost $200 off at Woot",
+      "summary": "Gaming laptop deals aren’t what they used to be (stares daggers at RAMageddon), which is why I consider Woot’s deal on a refurbished Alienware 16 Auro…",
       "source": "The Verge",
-      "date": "fa 5 hores",
-      "link": "#"
-    },
-    {
-      "title": "Major cybersecurity breakthrough protects against quantum threats",
-      "summary": "International research consortium announces new encryption standards designed to withstand quantum computing attacks.",
+      "date": "fa 15 min",
+      "link": "https://www.theverge.com/gadgets/989407/alienware-gaming-laptop-capsule-dishwasher-samsung-oled-deal-sale",
       "category": "tech",
-      "categoryLabel": "Tecnologia - Ciberseguretat",
+      "categoryLabel": "Tecnologia"
+    },
+    {
+      "title": "What to expect at Apple’s September 9th launch event",
+      "summary": "Apple's September 9th launch event could be one of its biggest in years. It will be Apple's first event since John Ternus took over as CEO on Septembe…",
+      "source": "The Verge",
+      "date": "fa 19 min",
+      "link": "https://www.theverge.com/tech/989692/apple-iphone-launch-event-september-2026-how-to-watch",
+      "category": "tech",
+      "categoryLabel": "Tecnologia"
+    },
+    {
+      "title": "Burnt out on a three-day week",
+      "summary": "Article URL: https://jennywanger.com/articles/burnt-out-on-a-three-day-week/ Comments URL: https://news.ycombinator.com/item?id=49564960 Points: 38 # …",
       "source": "Hacker News",
-      "date": "fa 7 hores",
-      "link": "#"
+      "date": "fa 57 min",
+      "link": "https://jennywanger.com/articles/burnt-out-on-a-three-day-week/",
+      "category": "tech",
+      "categoryLabel": "Tecnologia"
     },
     {
-      "title": "European Central Bank maintains interest rates amid inflation decline",
-      "summary": "Monetary policy decision reflects improving price stability across eurozone economies with stronger-than-expected consumer spending.",
-      "category": "economy",
-      "categoryLabel": "Macroeconomia - Mercats",
-      "source": "Reuters Finance",
-      "date": "fa 1 hora",
-      "link": "#"
+      "title": "Top Pentagon Official Contracted Personal Lawyer to Handle Minerals Deal",
+      "summary": "Article URL: https://prospect.org/2026/08/21/pentagon-minerals-deal-department-defense-cerberus-capital-alan-waldenberg-stephen-feinberg/ Comments URL…",
+      "source": "Hacker News",
+      "date": "fa 1h",
+      "link": "https://prospect.org/2026/08/21/pentagon-minerals-deal-department-defense-cerberus-capital-alan-waldenberg-stephen-feinberg/",
+      "category": "tech",
+      "categoryLabel": "Tecnologia - IA"
     },
     {
-      "title": "Global stock markets rally on positive economic indicators",
-      "summary": "Investors show renewed confidence as manufacturing data and employment figures exceed analyst expectations worldwide.",
-      "category": "economy",
-      "categoryLabel": "Macroeconomia - Economia Global",
-      "source": "Bloomberg Markets",
-      "date": "fa 2 hores",
-      "link": "#"
-    },
-    {
-      "title": "International trade agreements reshape global commerce landscape",
-      "summary": "New bilateral agreements between major economies promise increased market access and reduced tariff barriers.",
-      "category": "economy",
-      "categoryLabel": "Macroeconomia - Finances",
+      "title": "U.S. payrolls rose 162,000 in August, much more than expected; unemployment rate at 4.1%",
+      "summary": "Nonfarm payrolls were expected to increase by 53,000 in August while the unemployment rate held at 4.1%, according to the Dow Jones consensus.",
       "source": "CNBC",
-      "date": "fa 8 hores",
-      "link": "#"
+      "date": "fa 52 min",
+      "link": "https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
     },
     {
-      "title": "European Parliament debates new climate policy framework",
-      "summary": "Legislators negotiate ambitious environmental targets with significant implications for industrial sectors and renewable energy investment.",
-      "category": "politics",
-      "categoryLabel": "Política - Europa",
+      "title": "The big business of personal protection: How private security became a $50 billion industry",
+      "summary": "Private security spending and guard employment have climbed as companies and communities respond to high-profile attacks, even as violent crime falls.",
+      "source": "CNBC",
+      "date": "fa 56 min",
+      "link": "https://www.cnbc.com/2026/09/04/private-security-spending-crime-allied-universal.html",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "The big August jobs report is due out Friday. Here's what to expect for what has been a jobless summer",
+      "summary": "August nonfarm payrolls are expected to rise by 53,000 as a subdued labor market keeps Fed attention focused on inflation.",
+      "source": "CNBC",
+      "date": "fa 19h",
+      "link": "https://www.cnbc.com/2026/09/03/august-2026-jobs-report-payrolls.html",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "Aptera's Plan to Beat EV Costs",
+      "summary": "Aptera co-CEO Steve Fambro joins Bloomberg Open Interest to explain why the solar EV startup is betting on China to lower costs and accelerate product…",
+      "source": "Bloomberg Markets",
+      "date": "fa 4 min",
+      "link": "https://www.bloomberg.com/news/videos/2026-09-04/aptera-s-plan-to-beat-ev-costs-video",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "Could Bank Research Vanish From X?",
+      "summary": "Morgan Stanley is cracking down on X users sharing its research, filing copyright complaints against at least 16 posts and temporarily locking a promi…",
+      "source": "Bloomberg Markets",
+      "date": "fa 5 min",
+      "link": "https://www.bloomberg.com/news/videos/2026-09-04/could-bank-research-vanish-from-x-video",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "Rising interest rates pose a major threat to stock prices and other assets",
+      "summary": "How “Bondmageddon” may reset financial markets.",
+      "source": "MarketWatch",
+      "date": "fa 6 min",
+      "link": "https://www.marketwatch.com/story/rising-interest-rates-pose-a-major-threat-to-stock-prices-and-other-assets-0f9f3208?mod=mw_rss_topstories",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "A Democratic midterm sweep could make bonds the fourth-quarter contrarian play, says B. of A.’s Hartnett",
+      "summary": "Lower growth assumptions and weaker stocks would enhance the appeal of bonds, says equity-market strategist and “Flow Show” author.",
+      "source": "MarketWatch",
+      "date": "fa 18 min",
+      "link": "https://www.marketwatch.com/story/a-democratic-midterm-sweep-could-make-bonds-the-fourth-quarter-contrarian-play-says-b-of-a-s-hartnett-badfa59c?mod=mw_rss_topstories",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia"
+    },
+    {
+      "title": "Europe targeted by spiralling campaign of sabotage - and Russia is the chief suspect",
+      "summary": "Germany has blamed Russia for an attack on Leipzig airport but there has been a series of suspicious incidents elsewhere.",
       "source": "BBC Europe",
-      "date": "fa 9 hores",
-      "link": "#"
+      "date": "fa 53 min",
+      "link": "https://www.bbc.co.uk/news/articles/c5y4g6meekro?at_medium=RSS&at_campaign=rss",
+      "category": "politics",
+      "categoryLabel": "Política"
     },
     {
-      "title": "Universities implement innovative teaching methodologies for digital age",
-      "summary": "Educational institutions worldwide adopt hybrid learning approaches combining in-person instruction with advanced online collaboration tools.",
+      "title": "Volkswagen board approves plan to cut another 50,000 jobs",
+      "summary": "The group - which includes Audi, Porsche, Skoda as well as the VW brand - plans to cut a total of 100,000 posts by 2030.",
+      "source": "BBC Europe",
+      "date": "fa 8h",
+      "link": "https://www.bbc.co.uk/news/articles/cx2z0kvy4n4o?at_medium=RSS&at_campaign=rss",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Strengthening Africa is an investment in Europe's future: EU Commissioner Jozef Sikela",
+      "summary": "Are great-power politics back, at the expense of smaller countries? In an age of strongmen, is multilateralism in retreat? Not according to Jozef Sike…",
+      "source": "France 24 Europe",
+      "date": "fa 8 min",
+      "link": "https://www.france24.com/en/tv-shows/talking-europe/20260904-strengthening-africa-is-an-investment-in-europe-s-future-eu-commissioner-jozef-sikela",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Russian drone ‘aimed directly’ at Ukraine security service HQ, Zelensky says",
+      "summary": "A Russian drone struck the headquarters of Ukraine's SBU security services in Kyiv on Friday afternoon, said Ukrainian President Volodymyr Zelensky, i…",
+      "source": "France 24 Europe",
+      "date": "fa 1h",
+      "link": "https://www.france24.com/en/europe/20260904-russian-drone-aimed-directly-at-ukraine-security-service-hq-zelensky-says",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Philippine vice president is ordered arrested for threats against the president",
+      "summary": "It's part of a political showdown with Marcos. A trial could impact her plans to run for president in 2028.",
+      "source": "NPR World",
+      "date": "fa 1h",
+      "link": "https://www.npr.org/2026/09/04/g-s1-142016/philippine-vice-president-is-ordered-arrested-for-threats-against-the-president",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Myanmar military head visits Vietnam to normalize relations",
+      "summary": "His trip to Vietnam marks his third visit to an ASEAN member state as he seeks to restore Myanmar's standing in the bloc.",
+      "source": "NPR World",
+      "date": "fa 1h",
+      "link": "https://www.npr.org/2026/09/04/g-s1-142014/myanmar-military-head-visits-vietnam-to-normalize-relations",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "El govern espanyol aprova el model de finançament amb els vots de Catalunya i les Canàries",
+      "summary": "Sense alteracions de guió. El sistema de finançament ha sortit avalat aquest divendres en el Consell de Política Fiscal i Financera (CPFF), que ara ha…",
+      "source": "ARA Política",
+      "date": "fa 2h",
+      "link": "https://www.ara.cat/politica/moncloa/consell-politica-fiscal-financera-avala-sistema-financament-vots-catalunya-l-canaries_1_5840121.html",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "La Fiscalia avala que l'Audiència Nacional investigui l'entrada massiva de migrants a Ceuta",
+      "summary": "La Fiscalia és partidària que l'Audiència Nacional obri formalment una causa penal sobre l'entrada massiva de migrants a Ceuta de finals de juliol. Ai…",
+      "source": "ARA Política",
+      "date": "fa 2h",
+      "link": "https://www.ara.cat/politica/fiscalia-avala-l-audiencia-nacional-investigui-l-entrada-massiva-migrants-ceuta_1_5840119.html",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Vinebre registra un nou rècord de temperatura en un mes de setembre a Catalunya amb 41,8 graus",
+      "summary": "La calor també deixa màxims històrics a Andorra i Ademús · Fraga arriba a 39,9 graus i les Illes superen els 36",
+      "source": "VilaWeb",
+      "date": "fa 14 min",
+      "link": "https://www.vilaweb.cat/noticies/vinebre-registra-un-nou-record-de-temperatura-en-un-mes-de-setembre-a-catalunya-amb-418-graus/",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Protecció Civil valorarà d’enviar ES-alert per avisar dels efectes de fenòmens en curs o que acabin de passar",
+      "summary": "Parlon diu que cal preparar-se per situacions d'inestabilitat climàtica",
+      "source": "VilaWeb",
+      "date": "fa 44 min",
+      "link": "https://www.vilaweb.cat/noticies/proteccio-civil-valorara-enviar-es-alert-per-avisar-la-poblacio-dels-efectes-de-fenomens-en-curs-o-que-acabin-de-passar/",
+      "category": "politics",
+      "categoryLabel": "Política"
+    },
+    {
+      "title": "Emergency measures needed to stop teachers quitting, say Lib Dems",
+      "summary": "A survey by the party suggested almost half of teachers reported considering quitting the classroom in the next five years.",
+      "source": "BBC Education",
+      "date": "fa 4d",
+      "link": "https://www.bbc.co.uk/news/articles/ckgxng520m0o?at_medium=RSS&at_campaign=rss",
       "category": "education",
-      "categoryLabel": "Educació - Formació",
+      "categoryLabel": "Educació"
+    },
+    {
+      "title": "Six ways parents could make the return to school a little easier",
+      "summary": "Parenting experts give their top tips on how to make sure back-to-school runs as smoothly as possible.",
+      "source": "BBC Education",
+      "date": "fa 5d",
+      "link": "https://www.bbc.co.uk/news/articles/c8rnp5m85jlo?at_medium=RSS&at_campaign=rss",
+      "category": "education",
+      "categoryLabel": "Educació"
+    },
+    {
+      "title": "Even high school reporters are facing censorship now",
+      "summary": "As teenage journalists deal with threats to their school newspapers, they’re calling in attorneys for back upHigh school journalism is often seen as a…",
       "source": "The Guardian Education",
-      "date": "fa 10 hores",
-      "link": "#"
+      "date": "fa 1h",
+      "link": "https://www.theguardian.com/law/ng-interactive/2026/sep/04/high-school-journalism-splc",
+      "category": "education",
+      "categoryLabel": "Educació"
     },
     {
-      "title": "Global scholarship programs expand access to higher education",
-      "summary": "International organizations announce record funding for student grants, reaching underrepresented populations across developing nations.",
+      "title": "Schools in England face checks to root out unhealthy lunches",
+      "summary": "Ministers draw up inspection regime to enforce rules limiting sugar, fat and saltSchools could be reprimanded if they serve food containing too much f…",
+      "source": "The Guardian Education",
+      "date": "fa 20h",
+      "link": "https://www.theguardian.com/education/2026/sep/03/schools-england-checks-to-root-out-unhealthy-lunches",
       "category": "education",
-      "categoryLabel": "Educació - Universitats",
-      "source": "Reuters Life",
-      "date": "fa 11 hores",
-      "link": "#"
+      "categoryLabel": "Educació"
+    },
+    {
+      "title": "Hundreds of Thousands of Eligible Kids Are Waiting for Childcare Assistance",
+      "summary": "A nationwide investigation reveals massive waitlists for government-funded childcare assistance, leaving low-income families stranded without essentia…",
+      "source": "EdSurge",
+      "date": "fa 1d",
+      "link": "https://edsurge.com/news/hundreds-of-thousands-of-eligible-kids-are-waiting-for-childcare-assistance",
+      "category": "education",
+      "categoryLabel": "Educació"
     }
   ]
 }

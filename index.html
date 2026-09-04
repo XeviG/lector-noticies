@@ -400,9 +400,21 @@
     }
   }
 
+  function getNewsUrl() {
+    const loc = window.location;
+    if (loc.hostname === 'raw.githubusercontent.com') {
+      const parts = loc.pathname.split('/');
+      const user = parts[1];
+      const repo = parts[2];
+      return `https://raw.githubusercontent.com/${user}/${repo}/main/news.json`;
+    }
+    return 'news.json';
+  }
+
   async function loadNews() {
     try {
-      const response = await fetch('news.json');
+      const url = getNewsUrl();
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -410,7 +422,6 @@
       const data = await response.json();
       allNews = data.news || [];
       
-      // Actualitza la informació de l'última actualització
       const updateTime = formatUpdateTime(data.lastUpdate);
       document.getElementById('updateInfo').innerHTML = `
         <div><strong>${data.totalNews}</strong> notícies</div>
@@ -423,7 +434,6 @@
     } catch (error) {
       console.error('Error carregant notícies:', error);
       
-      // Mostra missatge d'error
       const errorDiv = document.getElementById('errorMessage');
       errorDiv.innerHTML = `
         <div class="error-message">
@@ -433,7 +443,6 @@
         </div>
       `;
       
-      // Prova carrega un JSON de mostra
       loadDefaultNews();
     }
   }
