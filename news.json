@@ -1,0 +1,114 @@
+{
+  "lastUpdate": "2026-09-04T08:00:00",
+  "totalNews": 12,
+  "news": [
+    {
+      "title": "Denver Nuggets defeat Lakers in high-stakes playoff battle",
+      "summary": "Jokic delivers 38-point performance to keep the Nuggets' championship hopes alive in crucial Western Conference matchup.",
+      "category": "sports",
+      "categoryLabel": "Esports - NBA",
+      "source": "ESPN NBA",
+      "date": "fa 2 hores",
+      "link": "#"
+    },
+    {
+      "title": "Stade Français dominates Racing 92 in Top 14 rugby derby",
+      "summary": "Historic 35-28 victory showcases French rugby's competitive intensity with standout performances from both sides.",
+      "category": "sports",
+      "categoryLabel": "Esports - Rugby",
+      "source": "Rugbyrama",
+      "date": "fa 4 hores",
+      "link": "#"
+    },
+    {
+      "title": "World Athletics celebrates new Diamond League season records",
+      "summary": "Elite athletes break barriers in middle-distance running events with impressive performances in latest championship round.",
+      "category": "sports",
+      "categoryLabel": "Esports - Atletisme",
+      "source": "World Athletics",
+      "date": "fa 6 hores",
+      "link": "#"
+    },
+    {
+      "title": "Artificial Intelligence transforms enterprise software development",
+      "summary": "New generation AI tools demonstrate unprecedented capabilities in code synthesis, testing, and deployment automation.",
+      "category": "tech",
+      "categoryLabel": "Tecnologia - IA",
+      "source": "Ars Technica",
+      "date": "fa 3 hores",
+      "link": "#"
+    },
+    {
+      "title": "Apple unveils revolutionary M4 chip with advanced neural processing",
+      "summary": "Latest silicon generation features breakthrough machine learning acceleration and energy efficiency improvements.",
+      "category": "tech",
+      "categoryLabel": "Tecnologia - Innovació",
+      "source": "The Verge",
+      "date": "fa 5 hores",
+      "link": "#"
+    },
+    {
+      "title": "Major cybersecurity breakthrough protects against quantum threats",
+      "summary": "International research consortium announces new encryption standards designed to withstand quantum computing attacks.",
+      "category": "tech",
+      "categoryLabel": "Tecnologia - Ciberseguretat",
+      "source": "Hacker News",
+      "date": "fa 7 hores",
+      "link": "#"
+    },
+    {
+      "title": "European Central Bank maintains interest rates amid inflation decline",
+      "summary": "Monetary policy decision reflects improving price stability across eurozone economies with stronger-than-expected consumer spending.",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia - Mercats",
+      "source": "Reuters Finance",
+      "date": "fa 1 hora",
+      "link": "#"
+    },
+    {
+      "title": "Global stock markets rally on positive economic indicators",
+      "summary": "Investors show renewed confidence as manufacturing data and employment figures exceed analyst expectations worldwide.",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia - Economia Global",
+      "source": "Bloomberg Markets",
+      "date": "fa 2 hores",
+      "link": "#"
+    },
+    {
+      "title": "International trade agreements reshape global commerce landscape",
+      "summary": "New bilateral agreements between major economies promise increased market access and reduced tariff barriers.",
+      "category": "economy",
+      "categoryLabel": "Macroeconomia - Finances",
+      "source": "CNBC",
+      "date": "fa 8 hores",
+      "link": "#"
+    },
+    {
+      "title": "European Parliament debates new climate policy framework",
+      "summary": "Legislators negotiate ambitious environmental targets with significant implications for industrial sectors and renewable energy investment.",
+      "category": "politics",
+      "categoryLabel": "Política - Europa",
+      "source": "BBC Europe",
+      "date": "fa 9 hores",
+      "link": "#"
+    },
+    {
+      "title": "Universities implement innovative teaching methodologies for digital age",
+      "summary": "Educational institutions worldwide adopt hybrid learning approaches combining in-person instruction with advanced online collaboration tools.",
+      "category": "education",
+      "categoryLabel": "Educació - Formació",
+      "source": "The Guardian Education",
+      "date": "fa 10 hores",
+      "link": "#"
+    },
+    {
+      "title": "Global scholarship programs expand access to higher education",
+      "summary": "International organizations announce record funding for student grants, reaching underrepresented populations across developing nations.",
+      "category": "education",
+      "categoryLabel": "Educació - Universitats",
+      "source": "Reuters Life",
+      "date": "fa 11 hores",
+      "link": "#"
+    }
+  ]
+}

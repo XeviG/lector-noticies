@@ -1,0 +1,37 @@
+name: 📰 Actualitzar Notícies
+
+on:
+  schedule:
+    # Executa cada dia a les 8:00 AM UTC (9:00 AM hora de Catalunya)
+    - cron: '0 8 * * *'
+  # Permet executar-ho manualment des de GitHub
+  workflow_dispatch:
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repositori
+        uses: actions/checkout@v3
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Instal·lar dependències
+        run: |
+          python -m pip install --upgrade pip
+          pip install feedparser
+      
+      - name: Executar actualització de notícies
+        run: python update_news.py
+      
+      - name: Commit i push dels canvis
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add news.json
+          git commit -m "🔄 Notícies actualitzades - $(date +'%Y-%m-%d %H:%M:%S')" || echo "Cap canvi per commitear"
+          git push
