@@ -26,6 +26,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Executar actualització de notícies
+        env:
+          TRANSLATE_ENDPOINT: ${{ secrets.TRANSLATE_ENDPOINT }}
+          TRANSLATION_EMAIL: ${{ secrets.TRANSLATION_EMAIL }}
         run: python update_news.py
 
       - name: Commit i push

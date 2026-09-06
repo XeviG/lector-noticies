@@ -13,9 +13,10 @@ Agregador intel·ligent de notícies diàries **en català** que recopila contin
 ## 🚀 Funcionament
 
 1. **`update_news.py`** llegeix feeds RSS públics i verificats de cada categoria.
-2. Genera **`news.json`** amb titular, resum, font, data de publicació i **context de rellevància** per a l'audiència catalana.
-3. **`index.html`** mostra les notícies organitzades per categories, amb les més recents al principi de cada secció.
-4. **GitHub Actions** executa el guió cada matí i **GitHub Pages** publica el resultat en una URL fixa.
+2. **Tradueix automàticament al català** el títol i el resum de cada notícia (els enllaços continuen apuntant a l'idioma original de la font).
+3. Genera **`news.json`** amb titular, resum, font i data de publicació.
+4. **`index.html`** mostra les notícies organitzades per categories, amb les més recents al principi de cada secció, i tot el text en català.
+5. **GitHub Actions** executa el guió cada matí i **GitHub Pages** publica el resultat en una URL fixa.
 
 ---
 
@@ -86,20 +87,41 @@ Cada notícia de `news.json` conté:
 
 ```json
 {
-  "title": "Titular",
-  "summary": "Resum en 2-3 frases",
+  "title": "Titular (en català)",
+  "summary": "Resum (traduït al català)",
   "published": "2026-09-06T06:00:00+00:00",
   "date": "fa 2 h",
   "source": "Font",
   "link": "https://…",
   "category": "sports",
   "categoryLabel": "Esports · NBA",
-  "subcategory": "NBA",
-  "connection": "Per què és rellevant per a l'audiència"
+  "subcategory": "NBA"
 }
 ```
 
 Criteris de qualitat aplicats: només fonts reconegudes, prioritat a les **últimes 24-48 hores**, **deduplicació** per títol i enllaç, i ordenació per recència dins de cada secció.
+
+---
+
+## 🌐 Traducció automàtica al català
+
+El lector mostra **tot** (títols i resums) en català, gràcies a un traductor gratuït de Google. Quan fas clic a una notícia, obres l'article original en l'idioma de la font.
+
+### 1. Crea l'Apps Script (2 minuts)
+
+1. Vés a [script.google.com](https://script.google.com) i prem **Nou projecte**.
+2. Esborra el contingut de l'editor i enganxa el fitxer **`appsscript.gs`** d'aquest repositori.
+3. Prem **Desplega → Nou desplegament → Aplicació web**.
+4. A **Executar com a** → *Jo (el teu compte)* i a **Qui pot accedir** → *Qualsevol*.
+5. Prem **Desplegar**, accepta els permisos i **copia la URL** (acaba en `/exec`).
+
+### 2. Desa la URL en un secret de GitHub
+
+1. Al repositori: **Settings → Secrets and variables → Actions → New repository secret**.
+2. **Name:** `TRANSLATE_ENDPOINT`
+3. **Secret:** la URL copiada.
+
+A partir del proper dia, tot es rebrà traduït. Mentre el secret no existeix, el guió prova altres traductors públics gratuïts i, si cap no respon, deixa el text original (mai no es trenca).
 
 ---
 

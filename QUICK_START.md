@@ -21,8 +21,9 @@ Executa `python update_news.py` cada dia per actualitzar les notícies.
 
 - Llegeix feeds RSS públics de les 5 categories (esports, tecnologia, macroeconomia, política catalana i educació).
 - Política catalana i educació: **només fonts catalanes en català**.
-- Genera `news.json` amb titular, resum, font, data i rellevància per a l'audiència.
+- Genera `news.json` amb títol, resum, font i data, **traduïts automàticament al català**.
 - Filtra notícies de més de 48 hores i elimina duplicats.
+- Traducció gratuïta: mira `appsscript.gs` i la secció «Traducció automàtica» del README.
 
 ## Comprovació ràpida
 

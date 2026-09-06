@@ -3,12 +3,23 @@
 
 import calendar
 import json
+import os
 import re
 import time
 from datetime import datetime, timezone
+from urllib.error import HTTPError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
 import feedparser
+
+try:
+    from langdetect import detect as detect_language, DetectorFactory
+
+    DetectorFactory.seed = 0
+except ImportError:
+    detect_language = None
 
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -17,6 +28,28 @@ USER_AGENT = (
 MAX_AGE_HOURS = 48
 MAX_TOTAL_NEWS = 45
 CATALONIA_TZ = ZoneInfo("Europe/Madrid")
+
+TRANSLATE_TARGET = "ca"
+TRANSLATE_ENDPOINT = os.environ.get("TRANSLATE_ENDPOINT", "").strip()
+TRANSLATION_EMAIL = os.environ.get("TRANSLATION_EMAIL", "").strip()
+
+CATALAN_SOURCES = {"ARA", "VilaWeb", "NacióDigital", "El Diari de l'Educació"}
+
+SOURCE_LANGS = {
+    "Rugbyrama": "fr",
+    "Investing.com": "es",
+    "Yahoo Finance": "en",
+    "Yahoo Sports NBA": "en",
+    "Ars Technica": "en",
+    "The Verge": "en",
+    "The Hacker News": "en",
+    "BleepingComputer": "en",
+    "TechCrunch": "en",
+    "Wired": "en",
+    "CNBC": "en",
+    "MarketWatch": "en",
+    "Bloomberg Markets": "en",
+}
 
 CATEGORY_LABELS = {
     "sports": "Esports",
@@ -27,14 +60,6 @@ CATEGORY_LABELS = {
 }
 
 CATEGORY_ORDER = ["sports", "tech", "economy", "politics", "education"]
-
-CONNECTIONS = {
-    "sports": "Rellevant per a l'audiència esportiva catalana, que segueix de prop les competicions internacionals com la NBA, el Top 14 o la Diamond League.",
-    "tech": "D'interès directe per al sector tecnològic i digital català, un dels ecosistemes més actius del sud d'Europa.",
-    "economy": "Els mercats europeus i els tipus d'interès condicionen directament l'economia catalana, molt vinculada a l'exportació i a la inversió estrangera.",
-    "politics": "Tracta decisions i acords que afecten directament les institucions i la ciutadania de Catalunya.",
-    "education": "Afecta el sistema educatiu i la comunitat docent i universitària de Catalunya i de tot l'àmbit de parla catalana.",
-}
 
 FEEDS = {
     "sports": [
@@ -244,6 +269,90 @@ def normalize_title(title):
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
 
 
+def _fetch_text(url):
+    req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
+    with urlopen(req, timeout=25) as resp:
+        return resp.read().decode("utf-8")
+
+
+def webapp_translate(text):
+    if not TRANSLATE_ENDPOINT:
+        return None
+    url = (
+        f"{TRANSLATE_ENDPOINT}?"
+        f"{urlencode({'q': text, 'tl': TRANSLATE_TARGET})}"
+    )
+    for attempt in range(2):
+        try:
+            out = _fetch_text(url)
+            return out.strip() or None
+        except (HTTPError, OSError):
+            if attempt == 0:
+                time.sleep(2)
+    return None
+
+
+def google_translate(text, source_lang):
+    params = {
+        "client": "gtx",
+        "sl": source_lang or "auto",
+        "tl": TRANSLATE_TARGET,
+        "dt": "t",
+        "q": text,
+    }
+    url = (
+        "https://translate.googleapis.com/translate_a/single?"
+        f"{urlencode(params)}"
+    )
+    try:
+        data = json.loads(_fetch_text(url))
+        return "".join(seg[0] for seg in data[0] if seg and seg[0]) or None
+    except (HTTPError, OSError):
+        return None
+
+
+def mymemory_translate(text, source_lang):
+    if not source_lang:
+        return None
+    params = {"q": text, "langpair": f"{source_lang}|{TRANSLATE_TARGET}"}
+    if TRANSLATION_EMAIL:
+        params["de"] = TRANSLATION_EMAIL
+    url = f"https://api.mymemory.translated.net/get?{urlencode(params)}"
+    for attempt in range(2):
+        try:
+            data = json.loads(_fetch_text(url))
+            if data.get("responseStatus") == 200:
+                out = data.get("responseData", {}).get("translatedText")
+                return out or None
+        except (HTTPError, OSError):
+            if attempt == 0:
+                time.sleep(2)
+    return None
+
+
+def translate_text(text, source_lang):
+    if not text:
+        return text
+    if detect_language is not None:
+        try:
+            if detect_language(text) == "ca":
+                return text
+        except Exception:
+            pass
+    lang = source_lang
+    if lang is None and detect_language is not None:
+        try:
+            lang = detect_language(text)
+        except Exception:
+            lang = None
+    out = webapp_translate(text)
+    if not out:
+        out = mymemory_translate(text, lang)
+    if not out:
+        out = google_translate(text, lang)
+    return out or text
+
+
 def fetch_feed(config):
     items = []
     urls = [config["url"]] + config.get("fallback_urls", [])
@@ -277,13 +386,24 @@ def fetch_feed(config):
         )
         if not title:
             continue
-        if len(summary) > 160:
-            summary = summary[:160].rsplit(" ", 1)[0] + "…"
+        title_out = title
+        summary_out = summary
+        if config["source"] not in CATALAN_SOURCES:
+            title_out = translate_text(
+                title, SOURCE_LANGS.get(config["source"])
+            )
+            if summary_out:
+                summary_out = translate_text(
+                    summary_out, SOURCE_LANGS.get(config["source"])
+                )
+            time.sleep(0.15)
+        if len(summary_out) > 180:
+            summary_out = summary_out[:180].rsplit(" ", 1)[0] + "…"
         pub = published_info(entry.get("published_parsed"))
         items.append(
             {
-                "title": title,
-                "summary": summary,
+                "title": title_out,
+                "summary": summary_out,
                 "published": pub["published"],
                 "publishedLocal": pub["publishedLocal"],
                 "date": relative_time(entry.get("published_parsed")),
@@ -295,7 +415,6 @@ def fetch_feed(config):
                     f"{config['subcategory']}"
                 ),
                 "subcategory": config["subcategory"],
-                "connection": CONNECTIONS[config["category"]],
             }
         )
     return items
