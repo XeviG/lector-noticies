@@ -3,566 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Lector de notícies diari amb fonts internacionals">
-  <title>📰 Notícies del Dia</title>
+  <meta name="description" content="Agregador intel·ligent de notícies diàries en català: esports, tecnologia, macroeconomia, política catalana i educació.">
+  <title>Notícies del Dia · Agregador Català</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--surface-0, #f5f3f0);
-      color: var(--text-primary, #2c2c2a);
-      transition: background-color 0.3s ease;
+    :root {
+      --bg: #f6f4f0;
+      --surface: #ffffff;
+      --surface-2: #eeece6;
+      --text: #26241f;
+      --text-muted: #6b6861;
+      --border: #dfdcd3;
+      --accent: #185fa5;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
     }
 
     body[data-mode="dark"] {
-      background: #1a1a18;
-      color: #e8e7e5;
+      --bg: #191917;
+      --surface: #242422;
+      --surface-2: #2e2e2b;
+      --text: #e9e7e2;
+      --text-muted: #9c9991;
+      --border: #3a3a37;
+      --accent: #6ea8dc;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .header {
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+    header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
+      align-items: flex-start;
+      gap: 1rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      margin-bottom: 1.75rem;
     }
 
-    .header-left h1 {
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-    }
+    h1 { font-size: 26px; letter-spacing: -0.4px; }
+    .subtitle { color: var(--text-muted); font-size: 14px; margin-top: 0.25rem; }
 
-    .header-right {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .update-info {
-      font-size: 12px;
-      color: var(--text-muted, #5f5e5a);
-      text-align: right;
-    }
-
-    body[data-mode="dark"] .update-info {
-      color: #888780;
-    }
-
-    .update-badge {
-      background: #0F6E56;
-      color: white;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 500;
-    }
+    .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+    .update-info { font-size: 12px; color: var(--text-muted); text-align: right; }
 
     .theme-toggle {
-      background: none;
-      border: 0.5px solid var(--border, #d3d1c7);
-      border-radius: 8px;
-      width: 36px;
-      height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      font-size: 16px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      transition: background 0.2s;
     }
+    .theme-toggle:hover { background: var(--surface-2); }
 
-    body[data-mode="dark"] .theme-toggle {
-      border-color: #5f5e5a;
-    }
-
-    .theme-toggle:hover {
-      background: var(--surface-1, #ede9e3);
-    }
-
-    body[data-mode="dark"] .theme-toggle:hover {
-      background: #2c2c2a;
-    }
-
-    .filters {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
+    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
 
     .filter-btn {
-      padding: 0.6rem 1.2rem;
-      border: 0.5px solid var(--border, #d3d1c7);
-      border-radius: 24px;
-      background: transparent;
-      cursor: pointer;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
       font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    body[data-mode="dark"] .filter-btn {
-      border-color: #5f5e5a;
-    }
-
-    .filter-btn.active {
-      background: #185fa5;
-      color: white;
-      border-color: #185fa5;
-    }
-
-    .filter-btn.active:hover {
-      background: #0c447c;
-    }
-
-    .filter-btn:hover:not(.active) {
-      background: var(--surface-1, #ede9e3);
-    }
-
-    body[data-mode="dark"] .filter-btn:hover:not(.active) {
-      background: #2c2c2a;
-    }
-
-    .news-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .news-card {
-      background: var(--surface-2, #ffffff);
-      border: 0.5px solid var(--border, #d3d1c7);
-      border-radius: 12px;
-      padding: 1.25rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      transition: all 0.2s;
       cursor: pointer;
+      transition: all 0.2s;
     }
+    .filter-btn:hover { background: var(--surface-2); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-    body[data-mode="dark"] .news-card {
-      background: #2a2a27;
-      border-color: #444441;
-    }
+    .section { margin-bottom: 2rem; }
 
-    .news-card:hover {
-      border-color: var(--border-strong, #b4b2a9);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    body[data-mode="dark"] .news-card:hover {
-      border-color: #5f5e5a;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-
-    .news-content {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .news-title {
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 1.4;
-      color: var(--text-primary, #2c2c2a);
-    }
-
-    body[data-mode="dark"] .news-title {
-      color: #e8e7e5;
-    }
-
-    .news-summary {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text-secondary, #888780);
-    }
-
-    body[data-mode="dark"] .news-summary {
-      color: #b4b2a9;
-    }
-
-    .news-meta {
-      display: flex;
-      gap: 1rem;
-      font-size: 12px;
-      color: var(--text-muted, #5f5e5a);
-      flex-wrap: wrap;
-    }
-
-    body[data-mode="dark"] .news-meta {
-      color: #888780;
-    }
-
-    .news-badge {
-      background: var(--surface-1, #ede9e3);
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      font-weight: 500;
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    body[data-mode="dark"] .news-badge {
-      background: #3c3c39;
-    }
-
-    .badge-sports { color: #0F6E56; }
-    .badge-tech { color: #185FA5; }
-    .badge-economy { color: #993C1D; }
-    .badge-politics { color: #534AB7; }
-    .badge-education { color: #3B6D11; }
-
-    body[data-mode="dark"] .badge-sports { color: #5DCAA5; }
-    body[data-mode="dark"] .badge-tech { color: #85B7EB; }
-    body[data-mode="dark"] .badge-economy { color: #F0997B; }
-    body[data-mode="dark"] .badge-politics { color: #AFA9EC; }
-    body[data-mode="dark"] .badge-education { color: #97C459; }
-
-    .news-source {
+    .section-head {
       display: flex;
       align-items: center;
-      gap: 4px;
-      white-space: nowrap;
-    }
-
-    .news-time {
-      color: var(--text-muted, #5f5e5a);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-secondary, #888780);
-    }
-
-    .empty-state p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-secondary, #888780);
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--border, #d3d1c7);
-      border-top-color: #185fa5;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    body[data-mode="dark"] .spinner {
-      border-color: #5f5e5a;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .error-message {
-      background: #fee;
-      border: 1px solid #fcc;
-      color: #c00;
-      padding: 1rem;
-      border-radius: 8px;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
       margin-bottom: 1rem;
     }
+    .section-title { display: flex; align-items: center; gap: 0.5rem; font-size: 18px; font-weight: 600; }
+    .section-count { font-size: 12px; color: var(--text-muted); }
 
-    body[data-mode="dark"] .error-message {
-      background: #3c2a2a;
-      border-color: #664444;
-      color: #faa;
+    .news-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+      border-color: var(--accent);
     }
 
+    .news-title { font-size: 15px; font-weight: 600; line-height: 1.4; margin-bottom: 0.4rem; }
+
+    .news-summary { font-size: 13px; color: var(--text-muted); margin-bottom: 0.75rem; }
+
+    .news-meta { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .news-connection {
+      margin-top: 0.7rem;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.5rem 0.75rem;
+    }
+    .news-connection strong { color: var(--text); font-weight: 600; }
+
+    .loading { text-align: center; color: var(--text-muted); padding: 3rem 1rem; }
+    .spinner {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 0.75rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty { text-align: center; color: var(--text-muted); padding: 2rem 1rem; }
+
+    .error-box {
+      background: #fdecea;
+      border: 1px solid #f5c6c2;
+      color: #a13020;
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      font-size: 13px;
+    }
+    body[data-mode="dark"] .error-box {
+      background: #332221;
+      border-color: #5c3a36;
+      color: #f0a8a0;
+    }
+    .error-box code {
+      background: rgba(0, 0, 0, 0.08);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); text-align: center; }
+
     @media (max-width: 640px) {
-      .header {
-        margin-bottom: 1.5rem;
-      }
-
-      .header h1 {
-        font-size: 20px;
-      }
-
-      .header-right {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .update-info {
-        text-align: left;
-      }
-
-      .news-card {
-        grid-template-columns: 1fr;
-      }
-
-      .news-title {
-        font-size: 14px;
-      }
-
-      .filters {
-        gap: 0.4rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .filter-btn {
-        padding: 0.5rem 1rem;
-        font-size: 12px;
-      }
+      .container { padding: 1.25rem 0.9rem 3rem; }
+      h1 { font-size: 22px; }
+      .header-right { align-items: flex-start; }
+      .update-info { text-align: left; }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="header">
-    <div class="header-left">
-      <h1>📰 Notícies del dia</h1>
+  <header>
+    <div>
+      <h1>📰 Notícies del Dia</h1>
+      <p class="subtitle">Agregador intel·ligent en català · Esports · Tecnologia · Macroeconomia · Política Catalana · Educació</p>
     </div>
     <div class="header-right">
-      <div class="update-info" id="updateInfo">
-        <div>Carregant...</div>
-      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Canviar tema">🌙</button>
+      <div class="update-info" id="updateInfo">Carregant…</div>
+    </div>
+  </header>
+
+  <div id="errorBox"></div>
+  <div class="filters" id="filters"></div>
+  <div id="content">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Carregant notícies…</p>
     </div>
   </div>
 
-  <div id="errorMessage"></div>
-  <div class="filters" id="filters"></div>
-  <div class="news-grid" id="newsGrid">
-    <div class="loading">
-      <div class="spinner"></div>
-      <p>Carregant notícies...</p>
-    </div>
-  </div>
-  <div class="empty-state" id="emptyState" style="display: none;">
-    <p>No hi ha notícies en aquesta categoria.</p>
-  </div>
+  <footer>
+    Fonts públiques verificades · Actualització automàtica diària · Cost zero
+  </footer>
 </div>
 
 <script>
-  const categories = ['Tots', 'Esports', 'Tecnologia', 'Macroeconomia', 'Política', 'Educació'];
+  const SECTION_ORDER = ['sports', 'tech', 'economy', 'politics', 'education'];
+  const FALLBACK_LABELS = {
+    sports: 'Esports',
+    tech: 'Tecnologia',
+    economy: 'Macroeconomia',
+    politics: 'Política Catalana',
+    education: 'Educació'
+  };
+  const ICONS = {
+    sports: '🏀',
+    tech: '💻',
+    economy: '💰',
+    politics: '🏛️',
+    education: '📚'
+  };
+  const CATEGORY_NAMES = ['Tots', 'Esports', 'Tecnologia', 'Macroeconomia', 'Política Catalana', 'Educació'];
+  const CATEGORY_KEYS = ['all', 'sports', 'tech', 'economy', 'politics', 'education'];
+
   let allNews = [];
-  let selectedCategory = 'Tots';
-
-  function getBadgeClass(category) {
-    const map = {
-      'sports': 'badge-sports',
-      'tech': 'badge-tech',
-      'economy': 'badge-economy',
-      'politics': 'badge-politics',
-      'education': 'badge-education'
-    };
-    return map[category] || '';
-  }
-
-  function formatUpdateTime(isoString) {
-    try {
-      const date = new Date(isoString);
-      const now = new Date();
-      const diff = now - date;
-      
-      const hours = Math.floor(diff / 3600000);
-      const minutes = Math.floor((diff % 3600000) / 60000);
-      
-      if (hours === 0) {
-        return `fa ${minutes} min`;
-      } else if (hours < 24) {
-        return `fa ${hours}h`;
-      } else {
-        return date.toLocaleDateString('ca-ES');
-      }
-    } catch {
-      return 'Desconeguda';
-    }
-  }
+  let selected = 'all';
 
   function getNewsUrl() {
     const loc = window.location;
-    if (loc.hostname === 'raw.githubusercontent.com') {
+    if (loc.hostname.includes('raw.githubusercontent.com')) {
       const parts = loc.pathname.split('/');
-      const user = parts[1];
-      const repo = parts[2];
-      return `https://raw.githubusercontent.com/${user}/${repo}/main/news.json`;
+      return 'https://raw.githubusercontent.com/' + parts[1] + '/' + parts[2] + '/main/news.json';
     }
     return 'news.json';
   }
 
-  async function loadNews() {
-    try {
-      const url = getNewsUrl();
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      allNews = data.news || [];
-      
-      const updateTime = formatUpdateTime(data.lastUpdate);
-      document.getElementById('updateInfo').innerHTML = `
-        <div><strong>${data.totalNews}</strong> notícies</div>
-        <div>Actualitzat ${updateTime}</div>
-      `;
-      
-      renderFilters();
-      renderNews();
-      
-    } catch (error) {
-      console.error('Error carregant notícies:', error);
-      
-      const errorDiv = document.getElementById('errorMessage');
-      errorDiv.innerHTML = `
-        <div class="error-message">
-          <strong>⚠️ Error al carregar les notícies</strong>
-          <p>Si és la primera vegada, executa primer: <code>python update_news.py</code></p>
-          <p>O si el fitxer news.json no existeix, crearé un de mostra.</p>
-        </div>
-      `;
-      
-      loadDefaultNews();
+  function formatTime(item) {
+    const rel = item.date || '';
+    if (!item.published) {
+      return rel;
     }
-  }
-
-  function loadDefaultNews() {
-    // Notícies de mostra per si news.json no existeix
-    allNews = [
-      {
-        title: 'Denver Nuggets vence al Lakers en partido de alta tensión',
-        summary: 'Jokic marca 38 puntos en una victoria crucial para mantener las opciones de playoffs.',
-        category: 'sports',
-        categoryLabel: 'Esports - NBA',
-        source: 'ESPN NBA',
-        date: 'fa 2 hores',
-        link: '#'
-      },
-      {
-        title: 'IA generativa revoluciona el desarrollo de código',
-        summary: 'Nuevos modelos muestran capacidades sin precedentes en síntesis de software complejo.',
-        category: 'tech',
-        categoryLabel: 'Tecnologia - IA',
-        source: 'Ars Technica',
-        date: 'fa 4 hores',
-        link: '#'
-      }
-    ];
-    
-    renderFilters();
-    renderNews();
+    const d = new Date(item.published);
+    if (isNaN(d.getTime())) {
+      return rel;
+    }
+    const abs = d.toLocaleString('ca-ES', {
+      day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
+    return abs + (rel && rel !== 'Recent' ? ' · ' + rel : '');
   }
 
   function renderFilters() {
     const container = document.getElementById('filters');
-    container.innerHTML = categories.map(cat => `
-      <button class="filter-btn ${cat === selectedCategory ? 'active' : ''}" data-category="${cat}">
-        ${cat}
-      </button>
-    `).join('');
-
+    container.innerHTML = CATEGORY_NAMES.map((name, i) => {
+      const key = CATEGORY_KEYS[i];
+      return '<button class="filter-btn' + (key === selected ? ' active' : '') + '" data-key="' + key + '">' + name + '</button>';
+    }).join('');
     container.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        selectedCategory = btn.dataset.category;
-        renderNews();
+        selected = btn.dataset.key;
         renderFilters();
+        renderContent();
       });
     });
   }
 
-  function renderNews() {
-    const categoryMap = {
-      'Esports': 'sports',
-      'Tecnologia': 'tech',
-      'Macroeconomia': 'economy',
-      'Política': 'politics',
-      'Educació': 'education'
-    };
+  function sortedByDate(items) {
+    return items.slice().sort((a, b) => {
+      const ta = a.published ? new Date(a.published).getTime() : 0;
+      const tb = b.published ? new Date(b.published).getTime() : 0;
+      return tb - ta;
+    });
+  }
 
-    const filtered = selectedCategory === 'Tots' 
-      ? allNews 
-      : allNews.filter(n => n.category === categoryMap[selectedCategory]);
+  function cardHtml(item) {
+    const label = item.categoryLabel || FALLBACK_LABELS[item.category] || item.category || 'Notícia';
+    return '' +
+      '<a class="news-card" href="' + (item.link || '#') + '" target="_blank" rel="noopener noreferrer">' +
+        '<div class="news-title">' + (item.title || '') + '</div>' +
+        (item.summary ? '<div class="news-summary">' + item.summary + '</div>' : '') +
+        '<div class="news-meta">' +
+          '<span class="badge">' + label + '</span>' +
+          '<span>' + (item.source || '') + '</span>' +
+          '<span>🕒 ' + formatTime(item) + '</span>' +
+        '</div>' +
+        (item.connection ? '<div class="news-connection"><strong>Rellevància:</strong> ' + item.connection + '</div>' : '') +
+      '</a>';
+  }
 
-    const grid = document.getElementById('newsGrid');
-    const empty = document.getElementById('emptyState');
+  function sectionHtml(key) {
+    const items = sortedByDate(allNews.filter(n => (n.category || '') === key));
+    if (!items.length) {
+      return '<div class="empty">No hi ha notícies en aquesta categoria per avui.</div>';
+    }
+    const label = FALLBACK_LABELS[key];
+    return '' +
+      '<div class="section">' +
+        '<div class="section-head">' +
+          '<div class="section-title">' + (ICONS[key] || '') + ' ' + label + '</div>' +
+          '<div class="section-count">' + items.length + ' notícies</div>' +
+        '</div>' +
+        items.map(cardHtml).join('') +
+      '</div>';
+  }
 
-    if (filtered.length === 0) {
-      grid.innerHTML = '';
-      empty.style.display = 'block';
+  function sectionHtmlTruncated(key, max = 4) {
+    const items = sortedByDate(allNews.filter(n => (n.category || '') === key));
+    if (!items.length) {
+      return '<div class="empty">No hi ha notícies en aquesta categoria per avui.</div>';
+    }
+    const label = FALLBACK_LABELS[key];
+    return '' +
+      '<div class="section">' +
+        '<div class="section-head">' +
+          '<div class="section-title">' + (ICONS[key] || '') + ' ' + label + '</div>' +
+          '<div class="section-count">' + items.length + ' notícies</div>' +
+        '</div>' +
+        items.slice(0, max).map(cardHtml).join('') +
+      '</div>';
+  }
+
+  function renderContent() {
+    const content = document.getElementById('content');
+    if (!allNews.length) {
+      content.innerHTML = '<div class="empty">No hi ha notícies disponibles. Executa <code>python update_news.py</code> per generar-les.</div>';
       return;
     }
+    if (selected === 'all') {
+      content.innerHTML = SECTION_ORDER.map(key => sectionHtmlTruncated(key)).join('');
+    } else {
+      content.innerHTML = sectionHtml(selected);
+    }
+  }
 
-    empty.style.display = 'none';
-    grid.innerHTML = filtered.map(item => `
-      <a href="${item.link || '#'}" class="news-card" target="_blank" rel="noopener noreferrer">
-        <div class="news-content">
-          <div class="news-title">${item.title}</div>
-          <div class="news-summary">${item.summary}</div>
-          <div class="news-meta">
-            <span class="news-badge ${getBadgeClass(item.category)}">${item.categoryLabel}</span>
-            <div class="news-source">
-              <span>${item.source}</span>
-            </div>
-            <span class="news-time">${item.date}</span>
-          </div>
-        </div>
-      </a>
-    `).join('');
+  function updateInfo(data) {
+    const el = document.getElementById('updateInfo');
+    const local = data.lastUpdateLocal || data.lastUpdate || '';
+    el.innerHTML = '<strong>' + data.totalNews + '</strong> notícies · Actualitzat ' + local;
+  }
+
+  async function loadNews() {
+    try {
+      const res = await fetch(getNewsUrl(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      allNews = data.news || [];
+      updateInfo(data);
+      document.getElementById('errorBox').innerHTML = '';
+    } catch (err) {
+      console.error(err);
+      allNews = [];
+      document.getElementById('errorBox').innerHTML =
+        '<div class="error-box"><strong>⚠️ Error en carregar les notícies.</strong> ' +
+        'Si és la primera execució, genera les dades amb: <code>python update_news.py</code> i espera la propera actualització automàtica del matí.</div>';
+      const el = document.getElementById('updateInfo');
+      el.textContent = 'Sense dades';
+    }
+    renderFilters();
+    renderContent();
   }
 
   function setupTheme() {
     const toggle = document.getElementById('themeToggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const saved = localStorage.getItem('newsreader-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDark = saved ? saved === 'dark' : prefersDark;
 
-    if (isDark) {
-      document.body.setAttribute('data-mode', 'dark');
-      toggle.textContent = '☀️';
-    } else {
-      toggle.textContent = '🌙';
-    }
-
-    toggle.addEventListener('click', () => {
-      const current = document.body.getAttribute('data-mode');
-      const newMode = current === 'dark' ? 'light' : 'dark';
-      if (newMode === 'dark') {
+    function apply(dark) {
+      if (dark) {
         document.body.setAttribute('data-mode', 'dark');
         toggle.textContent = '☀️';
       } else {
         document.body.removeAttribute('data-mode');
         toggle.textContent = '🌙';
       }
-      localStorage.setItem('newsreader-theme', newMode);
+    }
+    apply(isDark);
+    toggle.addEventListener('click', () => {
+      const next = document.body.getAttribute('data-mode') !== 'dark';
+      apply(next);
+      localStorage.setItem('newsreader-theme', next ? 'dark' : 'light');
     });
   }
 
-  // Inicia l'aplicació
   setupTheme();
   loadNews();
-
-  // Recarrega les notícies cada 5 minuts
   setInterval(loadNews, 5 * 60 * 1000);
 </script>
 </body>

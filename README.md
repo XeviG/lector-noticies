@@ -1,277 +1,154 @@
-# 📰 Lector de Notícies Diari - Guia Completa
+# 📰 Lector de Notícies del Dia · Agregador en Català
 
-Un agregador intel·ligent de notícies internacionals amb **actualització automàtica diària** sense cap cost.
+Agregador intel·ligent de notícies diàries **en català** que recopila contingut de les 5 àrees següents i es publica automàticament cada matí, **sense cap cost**.
+
+- 🏀 **Esports**: NBA, Rugby Top 14, Atletisme (Diamond League)
+- 💻 **Tecnologia**: IA, ciberseguretat, startups i inversions, productes, tendències digitals
+- 💰 **Macroeconomia**: borsa i mercats (**IBEX-35**, **CAC-40**), inflació, tipus d'interès
+- 🏛️ **Política Catalana** (només fonts catalanes en català)
+- 📚 **Educació** (només fonts catalanes en català)
 
 ---
 
-## 🚀 INSTAL·LACIÓ RÀPIDA (5 minuts)
+## 🚀 Funcionament
 
-### **Opció A: Local (Ordinador)**
+1. **`update_news.py`** llegeix feeds RSS públics i verificats de cada categoria.
+2. Genera **`news.json`** amb titular, resum, font, data de publicació i **context de rellevància** per a l'audiència catalana.
+3. **`index.html`** mostra les notícies organitzades per categories, amb les més recents al principi de cada secció.
+4. **GitHub Actions** executa el guió cada matí i **GitHub Pages** publica el resultat en una URL fixa.
 
-#### 1️⃣ **Instalar Python i dependències**
+---
 
-```bash
-# Baixar Python desde https://www.python.org/downloads/
-# O usar homebrew (Mac): brew install python3
-
-# Instal·lar dependències
-pip install feedparser
-```
-
-#### 2️⃣ **Executar el script**
+## ⚡ Ús local
 
 ```bash
+pip install -r requirements.txt
 python update_news.py
 ```
 
-Això crearà un fitxer `news.json` amb les últimes notícies.
-
-#### 3️⃣ **Obrir el lector**
-
-1. Obrir `index.html` amb un navegador
-2. Les notícies es carregaran automàticament
-
-✅ **Ja funciona!** Pots executar `python update_news.py` cada matí manualment.
+Obre `index.html` al navegador. Torna a executar el guió cada dia per actualitzar.
 
 ---
 
-### **Opció B: Automatització amb GitHub (RECOMANAT) ⭐**
+## 🤖 Automatització diària
 
-Això fa que s'actualitzi **sol cada matí** a les 8:00 AM.
+El workflow `.github/workflows/update.yml` s'executa cada matí a les **06:00 UTC** (08:00 hora de Catalunya a l'estiu). Amb el workflow `.github/workflows/pages.yml`, tots els canvis a `main` es publiquen automàticament a GitHub Pages.
 
-#### 1️⃣ **Crea un repositori GitHub**
-
-1. Vés a https://github.com/new
-2. Nom: `lector-notícies` (o el que vulguis)
-3. Marca "Public" (necessari perquè funcione)
-4. Click "Create repository"
-
-#### 2️⃣ **Puja els fitxers**
-
-Pots fer-ho de dos maneres:
-
-**Opció B1: Via web (més fàcil)**
-
-1. Click "uploading an existing file"
-2. Puja aquests fitxers:
-   - `update_news.py`
-   - `index.html`
-   - `update.yml`
-
-**Opció B2: Via terminal (més ràpid)**
-
-```bash
-# Clona el repositori
-git clone https://github.com/TU_USER/lector-notícies.git
-cd lector-notícies
-
-# Copia els fitxers
-mkdir -p .github/workflows
-cp update_news.py .
-cp index.html .
-cp update.yml .github/workflows/
-
-# Commit i push
-git add .
-git commit -m "Lector de notícies inicial"
-git push
-```
-
-#### 3️⃣ **Configura GitHub Actions**
-
-1. Vés al repositori
-2. Click a la pestanya "Actions"
-3. Click "set up a workflow yourself" (si no n'hi ha)
-4. Copia el contingut de `update.yml` en l'editor
-5. Commit (botó verde a dalt a la dreta)
-
-#### 4️⃣ **Accedeix al lector**
-
-1. Vés a: `https://raw.githubusercontent.com/TU_USER/lector-notícies/main/index.html`
-2. O col·loca-ho en una carpeta web pública
-
-✅ **Automàtic!** Cada matí a les 8:00 AM es descarregarà notícies noves.
+**Per activar GitHub Pages al teu repositori:**
+1. Vés a **Settings → Pages**.
+2. A **Build and deployment**, escull *Source* → **GitHub Actions**.
+3. La URL pública serà `https://<usuari>.github.io/<repositori>/`.
 
 ---
 
-## 📋 ESTRUCTURA DE FITXERS
+## 📰 Fonts de notícies
 
-```
-lector-notícies/
-├── update_news.py           # Script per baixar notícies
-├── index.html               # Interfície del lector
-├── news.json               # Notícies (generat automàticament)
-├── .github/
-│   └── workflows/
-│       └── update.yml      # Configuració de GitHub Actions
-└── README.md               # Aquesta guia
-```
+### Esports
+| Subcategoria | Fonts |
+|---|---|
+| NBA | Yahoo Sports NBA |
+| Rugby Top 14 | Rugbyrama |
+| Atletisme | World Athletics, Diamond League |
 
----
+### Tecnologia
+| Subcategoria | Fonts |
+|---|---|
+| IA i machine learning | The Verge AI |
+| Ciberseguretat | The Hacker News, BleepingComputer |
+| Startups i inversions | TechCrunch |
+| Productes i llançaments | The Verge, Ars Technica |
+| Tendències digitals | Wired |
 
-## 🎯 FUNCIONAMENT
+### Macroeconomia
+| Subcategoria | Fonts |
+|---|---|
+| IBEX-35 | Yahoo Finance |
+| CAC-40 | Yahoo Finance |
+| Mercats i borsa | CNBC, MarketWatch, Bloomberg Markets |
+| Mercats europeus | Investing.com |
 
-### **Com funciona localment:**
+### Política Catalana (només català)
+| Fonts |
+|---|
+| ARA · VilaWeb · NacióDigital |
 
-```
-1. Executar: python update_news.py
-2. Script llegeix feeds RSS internacionals
-3. Genera news.json amb 50 notícies máx
-4. Obrir index.html al navegador
-5. Les notícies es carreguen desde news.json
-```
-
-### **Com funciona amb GitHub:**
-
-```
-1. GitHub Actions executa update_news.py cada matí
-2. Fa push de news.json actualitzat al repositori
-3. index.html llegeix desde el repositori
-4. Les notícies sempre estan actualitzades
-```
-
----
-
-## 📰 FONTS DE NOTÍCIES
-
-El script llegeix de **fonts internacionals de qualitat**:
-
-### **Esports**
-- ESPN NBA
-- Rugbyrama (Top 14)
-- World Athletics (Diamond League)
-
-### **Tecnologia**
-- Ars Technica
-- The Verge
-- Hacker News
-
-### **Macroeconomia**
-- Reuters Finance
-- Bloomberg Markets
-- CNBC
-
-### **Política**
-- BBC Europe
-- Reuters World
-- France 24
-- ARA (Català)
-- VilaWeb (Català)
-
-### **Educació**
-- BBC News
-- The Guardian Education
-- Reuters Life
+### Educació (només català)
+| Subcategoria | Fonts |
+|---|---|
+| Sistema educatiu | El Diari de l'Educació |
+| Polítiques educatives | ARA (societat) |
 
 ---
 
-## 🔧 PERSONALITZACIÓ
+## 📋 Format de sortida
 
-### **Canviar hora d'actualització**
+Cada notícia de `news.json` conté:
 
-En `update.yml`, linea 10:
-
-```yaml
-- cron: '0 8 * * *'  # 8:00 AM UTC
+```json
+{
+  "title": "Titular",
+  "summary": "Resum en 2-3 frases",
+  "published": "2026-09-06T06:00:00+00:00",
+  "date": "fa 2 h",
+  "source": "Font",
+  "link": "https://…",
+  "category": "sports",
+  "categoryLabel": "Esports · NBA",
+  "subcategory": "NBA",
+  "connection": "Per què és rellevant per a l'audiència"
+}
 ```
 
-Exemples:
-- `'0 9 * * *'` → 9:00 AM
-- `'30 7 * * *'` → 7:30 AM
-- `'0 6 * * 1-5'` → 6:00 AM entre setmana
+Criteris de qualitat aplicats: només fonts reconegudes, prioritat a les **últimes 24-48 hores**, **deduplicació** per títol i enllaç, i ordenació per recència dins de cada secció.
 
-### **Afegir més fonts**
+---
 
-Edita `update_news.py` i afegeix nous feeds al diccionari `FEEDS`:
+## 🛠️ Personalització
+
+### Afegir o canviar fonts
+
+Edita el diccionari `FEEDS` a `update_news.py`:
 
 ```python
 'categoria': [
     {
-        'url': 'https://example.com/rss',
-        'source': 'Nom Font',
-        'limit': 2
-    }
+        'url': 'https://exemple.com/rss',
+        'source': 'Nom de la font',
+        'subcategory': 'Subcategoria',
+        'limit': 2,
+    },
 ]
 ```
 
-### **Limitar notícies per categoria**
+### Limitar el total de notícies
 
-En `update_news.py`, busca `'limit': 3` i canvia el número.
+Canvia `MAX_TOTAL_NEWS` (per defecte 45) a `update_news.py`.
 
----
+### Canviar la finestra temporal
 
-## 🐛 SOLUCIONAR PROBLEMES
+Canvia `MAX_AGE_HOURS` (per defecte 48 hores). Si una secció queda buida, s'inclou el contingut més recent disponible perquè no quedi mai sense notícies.
 
-### **"No podem llegir news.json"**
+### Canviar l'hora d'actualització
 
-Solució: Executa primer `python update_news.py` manualment.
+A `.github/workflows/update.yml`, la línia:
 
-### **GitHub Actions no s'executa**
-
-Revisió:
-1. El repositori és Public?
-2. El fitxer `.github/workflows/update.yml` té el nom correcte?
-3. Va a "Actions" i veure si hi ha errors
-
-### **Les notícies no s'actualitzen**
-
-1. Vés a GitHub "Actions"
-2. Mira l'últim workflow
-3. Si hi ha error, veure el log
+```yaml
+- cron: '0 6 * * *'
+```
 
 ---
 
-## 📱 ÚS
-
-### **Ordinador:**
-- Obrir `index.html` en navegador
-- Filtrar per categoria
-- Mode clar/fosc
-
-### **Mòbil:**
-- Suscripció als favorits del navegador
-- Totalment responsive
-- Funciona sense instal·lació
-
----
-
-## 💡 CONSELLS
-
-1. **Primer cop**: Executa `python update_news.py` manualment per generar `news.json`
-
-2. **GitHub Pages** (opcional): Pots publicar el `index.html` en GitHub Pages per tenir URL fixa:
-   - Vés a Settings → Pages
-   - Branch: main
-   - Folder: / (root)
-   - URL: `https://TU_USER.github.io/lector-notícies/`
-
-3. **Backup local**: Sempre pots fer backup del `news.json` si tems perdre-ho
-
-4. **Compartir**: Pots compartir la URL de `index.html` amb altres
-
----
-
-## 🆓 COST
-
-- **$0** - Tot és gratuït
-- Python: Lliure i obert
-- GitHub Actions: 2000 min/mes gratis
-- RSS Feeds: Tots públics
-
----
-
-## 📞 SUPORT RÀPID
+## 🔍 Solucionar problemes
 
 | Problema | Solució |
-|----------|---------|
-| Python no instal·lat | Baixa de https://www.python.org |
-| feedparser error | `pip install feedparser` |
-| news.json no existeix | Executa `python update_news.py` |
-| GitHub Actions error | Mira la pestanya "Actions" del repo |
-| Notícies no apareixen | Recarga la pàgina (Ctrl+Shift+R) |
+|---|---|
+| `ModuleNotFoundError: feedparser` | `pip install -r requirements.txt` |
+| `news.json` no existeix | Executa `python update_news.py` |
+| Notícies desactualitzades | Vés a la pestanya **Actions** de GitHub i consulta el log |
+| La web no es veu | Comprova que **GitHub Pages** està activada (Settings → Pages → GitHub Actions) |
 
 ---
 
-**Preguntes?** Pots revisar els logs de GitHub Actions o executar el script manualment per veure errors.
+## 💰 Cost
 
-¡Que gaudeixis! 📰✨
+**0 €.** Python és lliure, els feeds RSS són públics, GitHub Actions permet 2.000 minuts al mes i GitHub Pages és gratuït.
