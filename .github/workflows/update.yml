@@ -1,12 +1,22 @@
-name: Actualitzar Notícies
+name: Actualitzar Notícies i Desplegar
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    # 08:00 hora de Catalunya durant tot l'any
+    # - Estiu (CEST, UTC+2):  06:00 UTC, mesos 4-10
+    # - Hivern (CET, UTC+1):  07:00 UTC, mesos 11-12 i 1-3
+    - cron: '0 6 * * 4-10'
+    - cron: '0 7 * * 1-3,11-12'
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   update-news:
@@ -38,3 +48,15 @@ jobs:
           git add news.json
           git commit -m "Actualització de notícies - $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || echo "Cap canvi per commitejar"
           git push
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Pujar artefacte
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Desplegar a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
